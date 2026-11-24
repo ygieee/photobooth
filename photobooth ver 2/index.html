@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luigi's Photobooth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Luigi's Photobooth</h1>
+  <p id="status" role="status">Start the camera, then press Take Photos.</p>
+</header>
+
+<main>
+  <section class="booth">
+    <div class="stage" id="stage">
+      <video id="camera" autoplay playsinline muted></video>
+      <div id="placeholder">Camera is off</div>
+      <div id="countdown" aria-live="assertive"></div>
+      <div id="flash"></div>
+    </div>
+
+    <div class="actions">
+      <button id="startCamera">Start camera</button>
+      <button id="takePhoto" class="primary" disabled>Take photos</button>
+      <button id="switchCamera" disabled>Flip camera</button>
+    </div>
+
+    <div class="panel controls">
+      <label>Filter
+        <select id="filter">
+          <option value="none">Normal</option>
+          <option value="bw">Black &amp; white</option>
+          <option value="sepia">Sepia</option>
+          <option value="warm">Warm</option>
+          <option value="vivid">Vivid</option>
+          <option value="bright">Bright</option>
+        </select>
+      </label>
+      <label>Photos
+        <select id="photoCount">
+          <option value="2">2 photos</option>
+          <option value="3" selected>3 photos</option>
+          <option value="4">4 photos</option>
+        </select>
+      </label>
+      <label>Timer
+        <select id="timer">
+          <option value="3" selected>3 seconds</option>
+          <option value="5">5 seconds</option>
+          <option value="10">10 seconds</option>
+        </select>
+      </label>
+      <label>Layout
+        <select id="layout">
+          <option value="strip" selected>Vertical strip</option>
+          <option value="grid">Two columns</option>
+        </select>
+      </label>
+      <label>Page color
+        <input type="color" id="bgColor" value="#f2b632">
+      </label>
+    </div>
+  </section>
+
+  <section class="result">
+    <canvas id="photoStrip" aria-label="Your photo strip. Tap a photo to retake it."></canvas>
+    <p class="hint">Tap any photo on the strip to retake just that one.</p>
+
+    <div class="panel strip-options">
+      <label>Strip color
+        <input type="color" id="stripColor" value="#ffffff">
+      </label>
+      <label>Caption
+        <input type="text" id="caption" maxlength="28" placeholder="Add a caption">
+      </label>
+      <label class="check full">
+        <input type="checkbox" id="showDate" checked> Show today's date
+      </label>
+    </div>
+
+    <div class="actions">
+      <button id="retakeAll">Retake all</button>
+      <button id="download" class="primary">Download</button>
+      <button id="share" hidden>Share</button>
+    </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
